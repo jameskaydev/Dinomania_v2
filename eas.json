@@ -1,0 +1,21 @@
+{
+  "cli": {
+    "version": ">= 3.13.3"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "preview2": {
+      "distribution": "store"
+    },
+    "production": {}
+  },
+  "submit": {
+    "production": {}
+  }
+}
