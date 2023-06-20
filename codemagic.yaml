@@ -11,7 +11,7 @@ workflows:
         distribution_type: app_store
         bundle_identifier: com.gappsy.dashboard.www.ios5f6cc69706e43kk
       vars:
-          XCODE_WORKSPACE: "DinomaniaPrehistoricPlanet.xcodeproj"
+          XCODE_WORKSPACE: "DinomaniaPrehistoricPlanet.xcworkspace"
           XCODE_SCHEME: "DinomaniaPrehistoricPlanet"
           BUNDLE_ID: "com.gappsy.dashboard.www.ios5f6cc69706e43kk"
           APP_ID: 6449178488
@@ -54,8 +54,8 @@ workflows:
       - name: Build ipa for distribution
         script: |
           xcode-project build-ipa --archive-flags="-destination 'generic/platform=iOS'" \
-          --workspace "$FCI_BUILD_DIR/ios/DinomaniaPrehistoricPlanet.xcodeproj/project.xcworkspace" \
-          --scheme "DinomaniaPrehistoricPlanet"
+          --workspace "$FCI_BUILD_DIR/ios/$XCODE_WORKSPACE" \
+          --scheme "$XCODE_SCHEME" \
     artifacts:
         - build/ios/ipa/*.ipa
         - /tmp/xcodebuild_logs/*.log
