@@ -53,9 +53,9 @@ workflows:
           xcode-project use-profiles --warn-only
       - name: Build ipa for distribution
         script: |
-          xcode-project build-ipa --archive-flags="-destination 'generic/platform=iOS'"\
-            --workspace "$CM_BUILD_DIR/ios/DinomaniaPrehistoricPlanet.xcodeproj/project.xcworkspace" \
-            --scheme "$XCODE_SCHEME"
+          xcode-project build-ipa --archive-flags="-destination 'generic/platform=iOS'" \
+          --workspace "$CM_BUILD_DIR/ios/DinomaniaPrehistoricPlanet.xcodeproj/project.xcworkspace" \
+          --scheme "$XCODE_SCHEME"
     artifacts:
         - build/ios/ipa/*.ipa
         - /tmp/xcodebuild_logs/*.log
