@@ -54,8 +54,8 @@ workflows:
       - name: Build ipa for distribution
         script: |
           xcode-project build-ipa --archive-flags="-destination 'generic/platform=iOS'" \
-          --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE/project.xcworkspace" \
-          --scheme "$XCODE_SCHEME"
+          --workspace "$FCI_BUILD_DIR/ios/DinomaniaPrehistoricPlanet.xcodeproj/project.xcworkspace" \
+          --scheme "DinomaniaPrehistoricPlanet"
     artifacts:
         - build/ios/ipa/*.ipa
         - /tmp/xcodebuild_logs/*.log
