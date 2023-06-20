@@ -15,7 +15,7 @@ workflows:
           XCODE_SCHEME: "DinomaniaPrehistoricPlanet"
           BUNDLE_ID: "com.gappsy.dashboard.www.ios5f6cc69706e43kk"
           APP_ID: 6449178488
-      node: 16.14.2
+      node: 18.16.0
       xcode: 14.1
       cocoapods: default
     triggering:
