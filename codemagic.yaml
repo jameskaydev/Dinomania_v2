@@ -51,6 +51,9 @@ workflows:
       - name: Set up code signing settings on Xcode project
         script: |
           xcode-project use-profiles --warn-only
+      - name: echo vars
+        script: |
+          echo "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE"
       - name: Build ipa for distribution
         script: |
           xcode-project build-ipa --archive-flags="-destination 'generic/platform=iOS'"\
