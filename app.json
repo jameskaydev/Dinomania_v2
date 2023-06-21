@@ -18,7 +18,8 @@
     },
     "ios": {
       "bundleIdentifier": "com.gappsy.dashboard.www.ios5f6cc69706e43kk",
-      "icon": "./assets/ios_logo.jpg"
+      "icon": "./assets/ios_logo.jpg",
+      "buildNumber": "3"
     },
     "extra": {
       "eas": {
