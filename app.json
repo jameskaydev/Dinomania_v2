@@ -2,7 +2,7 @@
   "expo": {
     "name": "Dinomania Prehistoric Planet",
     "slug": "dinomania",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "icon": "./assets/app_logo.png",
     "assetBundlePatterns": [
       "**/*"
@@ -19,7 +19,7 @@
     "ios": {
       "bundleIdentifier": "com.gappsy.dashboard.www.ios5f6cc69706e43kk",
       "icon": "./assets/ios_logo.jpg",
-      "buildNumber": "3"
+      "buildNumber": "2"
     },
     "extra": {
       "eas": {
