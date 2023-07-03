@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import registerNNPushToken from "native-notify";
 import { StyleSheet, SafeAreaView, View } from "react-native";
 import Map from "./Map";
 import Home from "./Home";
@@ -11,7 +10,7 @@ import axios from "axios";
 import Videos from "./Videos";
 
 export default function App() {
-  registerNNPushToken(7827, "7qsiCHYCZo1Q0zwrDOjfAv");
+  
   const [selectedDinosaur, setSelectedDinosaur] = useState(null);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);

@@ -2,14 +2,15 @@
   "expo": {
     "name": "Dinomania Prehistoric Planet",
     "slug": "dinomania",
-    "version": "1.1.1",
+    "version": "1.1.0",
     "icon": "./assets/app_logo.png",
     "assetBundlePatterns": [
       "**/*"
     ],
     "android": {
-      "package": "com.jameskay.dinomania",
-      "versionCode": 1,
+      "package": "com.dinomania",
+      "versionCode": 3,
+      "version": "1.1.0",
       "icon": "./assets/app_logo.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/app_logo.png",
