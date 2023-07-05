@@ -14,7 +14,12 @@
     "preview2": {
       "distribution": "store"
     },
-    "production": {}
+    "production": {},
+    "apk": {
+      "android": {
+        "buildType": "apk"
+      }
+    }
   },
   "submit": {
     "production": {}

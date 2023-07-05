@@ -1,4 +1,4 @@
-package com.jameskay.dinomania;
+package com.dinomania;
 
 import android.os.Build;
 import android.os.Bundle;

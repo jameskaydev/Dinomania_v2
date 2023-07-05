@@ -2,16 +2,19 @@
   "expo": {
     "name": "Dinomania Prehistoric Planet",
     "slug": "dinomania",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "icon": "./assets/app_logo.png",
     "assetBundlePatterns": [
       "**/*"
     ],
     "android": {
       "package": "com.dinomania",
-      "versionCode": 3,
-      "version": "1.1.0",
+      "versionCode": 4,
+      "version": "1.2.0",
       "icon": "./assets/app_logo.png",
+      "googleServicesFile": "./google-services.json",
+      "permissions": ["NOTIFICATIONS"],
+      "useNextNotificationsApi": true,
       "adaptiveIcon": {
         "foregroundImage": "./assets/app_logo.png",
         "backgroundColor": "#FFFFFF"
@@ -20,7 +23,9 @@
     "ios": {
       "bundleIdentifier": "com.gappsy.dashboard.www.ios5f6cc69706e43kk",
       "icon": "./assets/ios_logo.jpg",
-      "buildNumber": "2"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "buildNumber": "3",
+      "version": "1.2.0"
     },
     "extra": {
       "eas": {

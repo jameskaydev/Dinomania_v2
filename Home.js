@@ -7,10 +7,11 @@ import {
   Text,
   TouchableOpacity,
   ImageBackground,
+  Linking
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-const Home = ({ showTheMap, showTheDirectory, showTheVideos }) => {
+const Home = ({ showTheMap, showTheDirectory, showTheVideos, theToken }) => {
   return (
     <SafeAreaView style={{ position: "relative" }}>
       <ImageBackground
@@ -60,6 +61,7 @@ const Home = ({ showTheMap, showTheDirectory, showTheVideos }) => {
             <TouchableOpacity style={styles.youtubeBtn} onPress={showTheVideos}>
               <Text style={styles.youtubeTxt}>Youtube</Text>
             </TouchableOpacity>
+
           </View>
         </View>
       </ImageBackground>
@@ -96,7 +98,7 @@ const styles = StyleSheet.create({
     width: "100%",
     color: "#F09F01",
     fontSize: 20,
-    textAlign: 'center',
+    textAlign: "center",
   },
   mapGr: {
     borderRadius: 10,
