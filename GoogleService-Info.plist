@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>8815492395-2nohbi0bnbjhngocnufap4lsoqe3ggdl.apps.googleusercontent.com</string>
+	<string>1058209761020-enuhof89n84o41cotiv4su7vl1s8pjhm.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.8815492395-2nohbi0bnbjhngocnufap4lsoqe3ggdl</string>
+	<string>com.googleusercontent.apps.1058209761020-enuhof89n84o41cotiv4su7vl1s8pjhm</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDdnyDjUPOh1PBmir4lHroaoKnvL-GGXgc</string>
+	<string>AIzaSyBk7918ZqWEKFrwSFRZXwmF6dLjjKlHdtc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>8815492395</string>
+	<string>1058209761020</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.gappsy.dashboard.www.ios5f6cc69706e43kk</string>
 	<key>PROJECT_ID</key>
-	<string>dinomania-eba25</string>
+	<string>dino4hire-9710d</string>
 	<key>STORAGE_BUCKET</key>
-	<string>dinomania-eba25.appspot.com</string>
+	<string>dino4hire-9710d.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:8815492395:ios:d28695895343a6617d596e</string>
+	<string>1:1058209761020:ios:a60f52ed91ed32691cf979</string>
+	<key>DATABASE_URL</key>
+	<string>https://dino4hire-9710d.firebaseio.com</string>
 </dict>
 </plist>

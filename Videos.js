@@ -48,7 +48,7 @@ const Videos = ({ showTheVideos }) => {
       "https://www.googleapis.com/youtube/v3/search",
       {
         params: {
-          key: "AIzaSyAshhnFWItx6mFlK3ut17h6Sr9h-I60u_Y",
+          key: "AIzaSyASQJD8T53iDN6dSs346NziCJIourJlTDw",
           channelId: "UCke5I8zQqBID3oDce08u4UQ",
           part: "snippet",
           maxResults: 1000,

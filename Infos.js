@@ -9,11 +9,13 @@ import {
   Dimensions,
   ScrollView,
   Animated,
+  Linking,
 } from "react-native";
 
 const Infos = ({ visible, dinosaur, onClose }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const { width, height } = Dimensions.get("window");
+  const [links, setLinks] = useState(dinosaur.links.split("*"));
 
   const [translateY] = useState(new Animated.Value(height));
 
@@ -71,52 +73,54 @@ const Infos = ({ visible, dinosaur, onClose }) => {
               />
               <Text style={styles.title}>{dinosaur.name}</Text>
               <Text style={styles.sectitle}>{dinosaur.secname}</Text>
-              <TouchableOpacity style={styles.closeButtonContainer} onPress={onClose}>
+              <TouchableOpacity
+                style={styles.closeButtonContainer}
+                onPress={onClose}
+              >
                 <Text style={styles.closeButton}>❌</Text>
               </TouchableOpacity>
 
               <View style={styles.infosContainer}>
                 <View style={styles.infos}>
-                  <Text style={styles.infosName}>
-                    Meaning:
-                  </Text>
+                  <Text style={styles.infosName}>Meaning:</Text>
                   <Text style={styles.infosValue}>{dinosaur.meaning}</Text>
                 </View>
                 <View style={styles.infos}>
-                  <Text style={styles.infosName}>
-                    Diet:
-                  </Text>
+                  <Text style={styles.infosName}>Diet:</Text>
                   <Text style={styles.infosValue}>{dinosaur.diet}</Text>
                 </View>
                 <View style={styles.infos}>
-                  <Text style={styles.infosName}>
-                    Length:
-                  </Text>
+                  <Text style={styles.infosName}>Length:</Text>
                   <Text style={styles.infosValue}>{dinosaur.lengthh}</Text>
                 </View>
                 <View style={styles.infos}>
-                  <Text style={styles.infosName}>
-                    Height:
-                  </Text>
+                  <Text style={styles.infosName}>Height:</Text>
                   <Text style={styles.infosValue}>{dinosaur.height}</Text>
                 </View>
                 <View style={styles.infos}>
-                  <Text style={styles.infosName}>
-                    Weight:
-                  </Text>
+                  <Text style={styles.infosName}>Weight:</Text>
                   <Text style={styles.infosValue}>{dinosaur.weight}</Text>
                 </View>
                 <View style={styles.infos}>
-                  <Text style={styles.infosName}>
-                    Era:
-                  </Text>
+                  <Text style={styles.infosName}>Era:</Text>
                   <Text style={styles.infosValue}>{dinosaur.era}</Text>
                 </View>
-
               </View>
 
               <View style={styles.desc}>
                 <Text style={styles.description}>{dinosaur.descriptions}</Text>
+                <View style={styles.linksContainer}>
+                  {links.map((link, index) =>
+                    index % 2 === 0 ? (
+                      <TouchableOpacity
+                        onPress={() => Linking.openURL(links[index + 1])}
+                        style={styles.linkContainer}
+                      >
+                        <Text style={styles.link}>{link}</Text>
+                      </TouchableOpacity>
+                    ) : null
+                  )}
+                </View>
               </View>
 
               <View>
@@ -175,34 +179,34 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   closeButtonContainer: {
-    position: 'absolute',
+    position: "absolute",
     top: 30,
     right: 30,
-    color: '#fff'
+    color: "#fff",
   },
   closeButton: {
     marginTop: 10,
     color: "#fff",
     textAlign: "center",
-    fontSize: 20
+    fontSize: 20,
   },
   dinoImg: {
     width: 400,
     height: "auto",
   },
   infosContainer: {
-    width: '100%',
+    width: "100%",
     marginTop: 40,
-    marginBottom: 20
+    marginBottom: 20,
   },
   infos: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   infosName: {
     color: "#fff",
     fontSize: 18,
-    width: '32%',
+    width: "32%",
     paddingLeft: 30,
     paddingBottom: 10,
   },
@@ -211,7 +215,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 500,
     paddingLeft: 20,
-    width: '80%',
+    width: "80%",
   },
   desc: {
     backgroundColor: "#FFFB3D",
@@ -222,6 +226,26 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 26,
     padding: 30,
+  },
+  linksContainer: {
+    // flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    paddingLeft: 30,
+    paddingBottom: 50
+  },
+  linkContainer: {
+    alignSelf: "flex-start",
+    paddingLeft: 6,
+    paddingRight: 6,
+    paddingBottom: 2,
+    marginRight: 3,
+    marginLeft: 3,
+    borderRadius: 10,
+    backgroundColor: 'rgba(0,0,0,0.15)'
+  },
+  link: {
+    fontSize: 16,
   },
 });
 
