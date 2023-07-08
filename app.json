@@ -24,7 +24,7 @@
       "bundleIdentifier": "com.gappsy.dashboard.www.ios5f6cc69706e43kk",
       "icon": "./assets/ios_logo.jpg",
       "googleServicesFile": "./GoogleService-Info.plist",
-      "buildNumber": "4",
+      "buildNumber": "5",
       "version": "1.2.0"
     },
     "extra": {
