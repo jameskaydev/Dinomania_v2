@@ -16,6 +16,8 @@ const Videos = ({ showTheVideos }) => {
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const [nextPageToken, setNextPageToken] = useState("");
+  const [isAll, setIsAll] = useState(false);
 
   useEffect(() => {
     BackHandler.addEventListener("hardwareBackPress", handleVideos);
@@ -27,6 +29,14 @@ const Videos = ({ showTheVideos }) => {
   const handleVideos = () => {
     showTheVideos();
     return true;
+  };
+
+  const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
+    const paddingToBottom = 20;
+    return (
+      layoutMeasurement.height + contentOffset.y >=
+      contentSize.height - paddingToBottom
+    );
   };
 
   useEffect(() => {
@@ -51,15 +61,21 @@ const Videos = ({ showTheVideos }) => {
           key: "AIzaSyASQJD8T53iDN6dSs346NziCJIourJlTDw",
           channelId: "UCke5I8zQqBID3oDce08u4UQ",
           part: "snippet",
-          maxResults: 1000,
+          maxResults: 50,
           order: "date",
           type: "video",
           videoDuration: 'medium'
         },
       }
     );
+    response.data.nextPageToken ? setNextPageToken(response.data.nextPageToken) : setIsAll(true);
     return response.data.items;
   };
+
+  const loadMore = async () => {
+    const data = await fetchChannelContent();
+    setVideos([...videos, ...data]);
+  }
 
   return (
     <>
@@ -76,7 +92,12 @@ const Videos = ({ showTheVideos }) => {
       >
         <Image source={require("./assets/back30.png")} />
       </TouchableOpacity>
-      <ScrollView style={styles.videosContainer}>
+      <ScrollView style={styles.videosContainer} onScroll={({ nativeEvent }) => {
+          if (isCloseToBottom(nativeEvent) && !isAll) {
+            loadMore();
+          }
+        }}
+        scrollEventThrottle={400}>
         {videos.map((video, index) => (
           <TouchableOpacity
             key={video.id.videoId}
