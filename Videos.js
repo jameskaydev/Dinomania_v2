@@ -54,7 +54,7 @@ const Videos = ({ showTheVideos }) => {
           maxResults: 1000,
           order: "date",
           type: "video",
-          videoDuration: 'long'
+          videoDuration: 'medium'
         },
       }
     );

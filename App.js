@@ -4,11 +4,11 @@ import Map from "./Map";
 import Home from "./Home";
 import Infos from "./Infos";
 import Search from "./Search";
+import Videos from './Videos';
 import AppIntro from "./AppIntro";
 import Directory from "./Directory";
 import axios from "axios";
-import Videos from "./Videos";
-import * as Device from "expo-device";
+// import Constants from "expo-constants";
 import * as Notifications from "expo-notifications";
 
 Notifications.setNotificationHandler({
@@ -21,32 +21,22 @@ Notifications.setNotificationHandler({
 
 async function registerForPushNotificationsAsync() {
   let token;
-  if (Device.isDevice) {
-    const { status: existingStatus } =
-      await Notifications.getPermissionsAsync();
-    let finalStatus = existingStatus;
-    if (existingStatus !== "granted") {
-      const { status } = await Notifications.requestPermissionsAsync();
-      finalStatus = status;
-    }
-    if (finalStatus !== "granted") {
-      alert("Failed to get push token for push notification!");
-      return;
-    }
-    token = (await Notifications.getDevicePushTokenAsync()).data;
-    console.log(token);
-  } else {
-    alert("Must use physical device for Push Notifications");
+  // if (Constants.isDevice) {
+  const { status: existingStatus } = await Notifications.getPermissionsAsync();
+  let finalStatus = existingStatus;
+  if (existingStatus !== "granted") {
+    const { status } = await Notifications.requestPermissionsAsync();
+    finalStatus = status;
   }
+  if (finalStatus !== "granted") {
+    alert("Failed to get push token for push notification!");
+    return;
+  }
+  token = (await Notifications.getDevicePushTokenAsync()).data;
+  // } else {
+  //   alert("Must use physical device for Push Notifications");
+  // }
 
-  if (Platform.OS === "android") {
-    Notifications.setNotificationChannelAsync("default", {
-      name: "default",
-      importance: Notifications.AndroidImportance.MAX,
-      vibrationPattern: [0, 250, 250, 250],
-      lightColor: "#FF231F7C",
-    });
-  }
 
   return token;
 }
@@ -60,18 +50,26 @@ export default function App() {
   const [showVideos, setShowVideos] = useState(false);
   const [showMap, setShowMap] = useState(false);
   const [theToken, setTheToken] = useState("");
+  const [notification, setNotification] = useState("");
   const timeout = useRef(null);
   const responseListener = useRef();
   const notificationListener = useRef();
 
   useEffect(() => {
-    registerForPushNotificationsAsync().then((token) => setTheToken(token));
-
-    notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
-      // setNotification(notification);
+    registerForPushNotificationsAsync().then((token) => {
+      setTheToken(token);
+      axios.post(`http://89.117.36.161/api/saveToken?platform=ios&token=${token}`, {}, {
+        headers: {
+          auth: 'H3l5b1T5YRAD156iXNJO',
+        }
+      })
     });
 
-    responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+    notificationListener.current = Notifications.addNotificationReceivedListener((notif) => {
+      setNotification(notif);
+    });
+
+    responseListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
       console.log(response);
     });
 
@@ -135,18 +133,14 @@ export default function App() {
   return (
     <>
       {showIntro && <AppIntro onFinish={handleIntroFinish} />}
-      {showIntro
-        ? null
-        : !showMap &&
-          !showDirectory &&
-          !showVideos && (
-            <Home
-              showTheMap={showTheMap}
-              showTheDirectory={showTheDirectory}
-              showTheVideos={showTheVideos}
-              theToken={theToken}
-            />
-          )}
+      {showIntro ? null : !showMap && !showDirectory && !showVideos && (
+        <Home
+          showTheMap={showTheMap}
+          showTheDirectory={showTheDirectory}
+          showTheVideos={showTheVideos}
+          theToken={theToken}
+        />
+      )}
       {showIntro ? null : (
         <View style={styles.container}>
           <View style={{ flex: 1 }}>
@@ -198,3 +192,4 @@ const styles = StyleSheet.create({
     marginTop: 100,
   },
 });
+// test mac

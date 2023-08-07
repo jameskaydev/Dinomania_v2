@@ -15,7 +15,7 @@ import {
 const Infos = ({ visible, dinosaur, onClose }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const { width, height } = Dimensions.get("window");
-  const [links, setLinks] = useState(dinosaur.links.split("*"));
+  const [links, setLinks] = useState(dinosaur.links ? dinosaur.links.split("*") : null);
 
   const [translateY] = useState(new Animated.Value(height));
 
@@ -109,18 +109,23 @@ const Infos = ({ visible, dinosaur, onClose }) => {
 
               <View style={styles.desc}>
                 <Text style={styles.description}>{dinosaur.descriptions}</Text>
-                <View style={styles.linksContainer}>
-                  {links.map((link, index) =>
-                    index % 2 === 0 ? (
-                      <TouchableOpacity
-                        onPress={() => Linking.openURL(links[index + 1])}
-                        style={styles.linkContainer}
-                      >
-                        <Text style={styles.link}>{link}</Text>
-                      </TouchableOpacity>
-                    ) : null
-                  )}
-                </View>
+                {
+                  links ? (
+                    <View style={styles.linksContainer}>
+                    {links.map((link, index) =>
+                      index % 2 === 0 ? (
+                        <TouchableOpacity
+                          onPress={() => Linking.openURL(links[index + 1])}
+                          style={styles.linkContainer}
+                        >
+                          <Text style={styles.link}>{link}</Text>
+                        </TouchableOpacity>
+                      ) : null
+                    )}
+                  </View>
+                  ) : null
+                }
+
               </View>
 
               <View>
