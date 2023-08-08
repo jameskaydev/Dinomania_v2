@@ -20,7 +20,9 @@ Notifications.setNotificationHandler({
 });
 
 async function registerForPushNotificationsAsync() {
-  let token;
+  let token, error;
+  try {
+
   // if (Constants.isDevice) {
   const { status: existingStatus } = await Notifications.getPermissionsAsync();
   let finalStatus = existingStatus;
@@ -36,9 +38,12 @@ async function registerForPushNotificationsAsync() {
   // } else {
   //   alert("Must use physical device for Push Notifications");
   // }
+  } catch (err) {
+    console.log(err)
+    error = err;
+  }
 
-
-  return token;
+  return {token,error};
 }
 
 export default function App() {
@@ -55,15 +60,27 @@ export default function App() {
   const responseListener = useRef();
   const notificationListener = useRef();
 
+  const [error, setError] = useState(null);
+  const [error2, setError2] = useState(null);
+
   useEffect(() => {
-    registerForPushNotificationsAsync().then((token) => {
+    try {
+    registerForPushNotificationsAsync().then(({token, error}) => {
       setTheToken(token);
       axios.post(`http://89.117.36.161/api/saveToken?platform=ios&token=${token}`, {}, {
         headers: {
           auth: 'H3l5b1T5YRAD156iXNJO',
         }
       })
-    });
+      if (error) {
+        setError(error);
+      }
+    });    
+  } catch (err) {
+    console.log(err);
+    setError2(err);
+  }
+
 
     notificationListener.current = Notifications.addNotificationReceivedListener((notif) => {
       setNotification(notif);
@@ -132,7 +149,18 @@ export default function App() {
 
   return (
     <>
-      {showIntro && <AppIntro onFinish={handleIntroFinish} />}
+    {theToken ? (
+      <Text style={{color: 'red'}}>
+        {theToken}
+      </Text>
+    ) : (
+      <Text style={{color: 'red'}}>
+        There is no token: {'\n'}
+        {error ? JSON.stringify(error) : null} {'\n'}
+        {error2? JSON.stringify(error2) : null}
+      </Text>
+    )}
+      {/* {showIntro && <AppIntro onFinish={handleIntroFinish} />}
       {showIntro ? null : !showMap && !showDirectory && !showVideos && (
         <Home
           showTheMap={showTheMap}
@@ -175,7 +203,7 @@ export default function App() {
         />
       ) : null}
 
-      {showVideos && <Videos showTheVideos={showTheVideos} />}
+      {showVideos && <Videos showTheVideos={showTheVideos} />} */}
     </>
   );
 }
