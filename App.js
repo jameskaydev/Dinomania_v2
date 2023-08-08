@@ -149,18 +149,7 @@ export default function App() {
 
   return (
     <>
-    {theToken ? (
-      <Text style={{color: 'red'}}>
-        {theToken}
-      </Text>
-    ) : (
-      <Text style={{color: 'red'}}>
-        There is no token: {'\n'}
-        {error ? JSON.stringify(error) : null} {'\n'}
-        {error2? JSON.stringify(error2) : null}
-      </Text>
-    )}
-      {/* {showIntro && <AppIntro onFinish={handleIntroFinish} />}
+      {showIntro && <AppIntro onFinish={handleIntroFinish} />}
       {showIntro ? null : !showMap && !showDirectory && !showVideos && (
         <Home
           showTheMap={showTheMap}
@@ -203,7 +192,7 @@ export default function App() {
         />
       ) : null}
 
-      {showVideos && <Videos showTheVideos={showTheVideos} />} */}
+      {showVideos && <Videos showTheVideos={showTheVideos} />}
     </>
   );
 }
@@ -220,4 +209,3 @@ const styles = StyleSheet.create({
     marginTop: 100,
   },
 });
-// test mac

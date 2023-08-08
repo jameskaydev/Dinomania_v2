@@ -54,8 +54,6 @@ const Home = ({ showTheMap, showTheDirectory, showTheVideos, theToken }) => {
               </TouchableOpacity>
             </LinearGradient>
 
-            <Text style={{color: 'red'}}>{theToken}</Text>
-
             <TouchableOpacity style={styles.listBtn} onPress={showTheDirectory}>
               <Text style={styles.listTxt}>Go to list</Text>
             </TouchableOpacity>
