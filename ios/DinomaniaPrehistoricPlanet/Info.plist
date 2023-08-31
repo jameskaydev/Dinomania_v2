@@ -17,7 +17,7 @@
     <key>CFBundlePackageType</key>
     <string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.2.1</string>
+    <string>1.2.11</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleURLTypes</key>
@@ -36,7 +36,9 @@
       </dict>
     </array>
     <key>CFBundleVersion</key>
-    <string>7</string>
+    <string>12</string>
+    <key>GMSApiKey</key>
+    <string>AIzaSyA2xzyLrf-i0soc6E5Qxb3d4QOVFso6Is4</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>NSAppTransportSecurity</key>

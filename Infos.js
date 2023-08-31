@@ -12,148 +12,111 @@ import {
   Linking,
 } from "react-native";
 
-const Infos = ({ visible, dinosaur, onClose }) => {
-  const [modalVisible, setModalVisible] = useState(false);
+const Infos = ({ route }) => {
+  const { dinosaur } = route.params;
   const { width, height } = Dimensions.get("window");
   const [links, setLinks] = useState(dinosaur.links ? dinosaur.links.split("*") : null);
 
-  const [translateY] = useState(new Animated.Value(height));
-
-  useEffect(() => {
-    if (visible) {
-      setModalVisible(visible);
-      Animated.timing(translateY, {
-        toValue: 0,
-        duration: 500,
-        useNativeDriver: true,
-      }).start();
-    } else {
-      Animated.timing(translateY, {
-        toValue: height,
-        duration: 500,
-        useNativeDriver: true,
-      }).start(() => {
-        setModalVisible(visible);
-      });
-    }
-  }, [visible]);
-
   return (
-    <Modal visible={modalVisible}>
-      <View style={styles.container}>
-        <Animated.View
-          style={[
-            styles.popup,
-            {
-              transform: [{ translateY: translateY }],
-            },
-          ]}
+    <View style={styles.container}>
+      <ScrollView>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-          <ScrollView>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+          <Image
+            style={styles.logoImg}
+            source={require("./assets/logo.png")}
+          />
+          <Image
+            style={{
+              width: width * 0.6,
+              aspectRatio: 1,
+              resizeMode: "contain",
+              marginBottom: 0,
+            }}
+            source={{ uri: `http://89.117.36.161/${dinosaur.img}` }}
+          />
+          <Text style={styles.title}>{dinosaur.name}</Text>
+          <Text style={styles.sectitle}>{dinosaur.secname}</Text>
+
+          <View style={styles.infosContainer}>
+            <View style={styles.infos}>
+              <Text style={styles.infosName}>Meaning:</Text>
+              <Text style={styles.infosValue}>{dinosaur.meaning}</Text>
+            </View>
+            <View style={styles.infos}>
+              <Text style={styles.infosName}>Diet:</Text>
+              <Text style={styles.infosValue}>{dinosaur.diet}</Text>
+            </View>
+            <View style={styles.infos}>
+              <Text style={styles.infosName}>Length:</Text>
+              <Text style={styles.infosValue}>{dinosaur.lengthh}</Text>
+            </View>
+            <View style={styles.infos}>
+              <Text style={styles.infosName}>Height:</Text>
+              <Text style={styles.infosValue}>{dinosaur.height}</Text>
+            </View>
+            <View style={styles.infos}>
+              <Text style={styles.infosName}>Weight:</Text>
+              <Text style={styles.infosValue}>{dinosaur.weight}</Text>
+            </View>
+            <View style={styles.infos}>
+              <Text style={styles.infosName}>Era:</Text>
+              <Text style={styles.infosValue}>{dinosaur.era}</Text>
+            </View>
+          </View>
+
+          <View style={styles.desc}>
+            <Text style={styles.description}>{dinosaur.descriptions}</Text>
+            {
+              links ? (
+                <View style={styles.linksContainer}>
+                {links.map((link, index) =>
+                  index % 2 === 0 ? (
+                    <TouchableOpacity
+                      onPress={() => Linking.openURL(links[index + 1])}
+                      style={styles.linkContainer}
+                      key={index}
+                    >
+                      <Text style={styles.link}>{link}</Text>
+                    </TouchableOpacity>
+                  ) : null
+                )}
+              </View>
+              ) : null
+            }
+
+          </View>
+
+          <View>
+            {dinosaur.charts.map((chart, index) => (
               <Image
-                style={styles.logoImg}
-                source={require("./assets/logo.png")}
-              />
-              <Image
+                key={index}
+                source={{ uri: `http://89.117.36.161/${chart}` }}
                 style={{
-                  width: width * 0.6,
+                  width: width * 0.8,
+                  height: undefined,
                   aspectRatio: 1,
                   resizeMode: "contain",
-                  marginBottom: 0,
                 }}
-                source={{ uri: `http://89.117.36.161/${dinosaur.img}` }}
               />
-              <Text style={styles.title}>{dinosaur.name}</Text>
-              <Text style={styles.sectitle}>{dinosaur.secname}</Text>
-              <TouchableOpacity
-                style={styles.closeButtonContainer}
-                onPress={onClose}
-              >
-                <Text style={styles.closeButton}>❌</Text>
-              </TouchableOpacity>
-
-              <View style={styles.infosContainer}>
-                <View style={styles.infos}>
-                  <Text style={styles.infosName}>Meaning:</Text>
-                  <Text style={styles.infosValue}>{dinosaur.meaning}</Text>
-                </View>
-                <View style={styles.infos}>
-                  <Text style={styles.infosName}>Diet:</Text>
-                  <Text style={styles.infosValue}>{dinosaur.diet}</Text>
-                </View>
-                <View style={styles.infos}>
-                  <Text style={styles.infosName}>Length:</Text>
-                  <Text style={styles.infosValue}>{dinosaur.lengthh}</Text>
-                </View>
-                <View style={styles.infos}>
-                  <Text style={styles.infosName}>Height:</Text>
-                  <Text style={styles.infosValue}>{dinosaur.height}</Text>
-                </View>
-                <View style={styles.infos}>
-                  <Text style={styles.infosName}>Weight:</Text>
-                  <Text style={styles.infosValue}>{dinosaur.weight}</Text>
-                </View>
-                <View style={styles.infos}>
-                  <Text style={styles.infosName}>Era:</Text>
-                  <Text style={styles.infosValue}>{dinosaur.era}</Text>
-                </View>
-              </View>
-
-              <View style={styles.desc}>
-                <Text style={styles.description}>{dinosaur.descriptions}</Text>
-                {
-                  links ? (
-                    <View style={styles.linksContainer}>
-                    {links.map((link, index) =>
-                      index % 2 === 0 ? (
-                        <TouchableOpacity
-                          onPress={() => Linking.openURL(links[index + 1])}
-                          style={styles.linkContainer}
-                        >
-                          <Text style={styles.link}>{link}</Text>
-                        </TouchableOpacity>
-                      ) : null
-                    )}
-                  </View>
-                  ) : null
-                }
-
-              </View>
-
-              <View>
-                {dinosaur.charts.map((chart, index) => (
-                  <Image
-                    key={index}
-                    source={{ uri: `http://89.117.36.161/${chart}` }}
-                    style={{
-                      width: width * 0.8,
-                      height: undefined,
-                      aspectRatio: 1,
-                      resizeMode: "contain",
-                    }}
-                  />
-                ))}
-              </View>
-            </View>
-          </ScrollView>
-        </Animated.View>
-      </View>
-    </Modal>
+            ))}
+          </View>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: "rgba(0, 0, 0, 1)",
     justifyContent: "flex-end",
     alignItems: "center",
   },
@@ -183,24 +146,12 @@ const styles = StyleSheet.create({
     fontWeight: 600,
     fontSize: 18,
   },
-  closeButtonContainer: {
-    position: "absolute",
-    top: 30,
-    right: 30,
-    color: "#fff",
-  },
-  closeButton: {
-    marginTop: 10,
-    color: "#fff",
-    textAlign: "center",
-    fontSize: 20,
-  },
   dinoImg: {
     width: 400,
     height: "auto",
   },
   infosContainer: {
-    width: "100%",
+    width: "80%",
     marginTop: 40,
     marginBottom: 20,
   },

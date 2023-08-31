@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { View, Image, StyleSheet, Animated, Dimensions } from "react-native";
+import { View, Image, StyleSheet, Animated } from "react-native";
 
-const AppIntro = ({ onFinish }) => {
+const AppIntro = () => {
   const [animation] = useState(new Animated.Value(0));
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const AppIntro = ({ onFinish }) => {
           duration: 1000,
           useNativeDriver: true,
         }).start(() => {
-          onFinish();
+          // onFinish();
         });
       }, 2000);
     });
@@ -40,7 +40,6 @@ const AppIntro = ({ onFinish }) => {
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {

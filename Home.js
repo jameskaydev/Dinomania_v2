@@ -1,22 +1,20 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import {
   View,
   Image,
   StyleSheet,
-  SafeAreaView,
   Text,
   TouchableOpacity,
   ImageBackground,
-  Linking
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-const Home = ({ showTheMap, showTheDirectory, showTheVideos, theToken }) => {
+
+const Home = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ position: "relative" }}>
+    <View style={{ position: "relative", height: '100%' }}>
       <ImageBackground
-        source={require("./assets/dm2.png")}
-        style={styles.imgBack}
+        source={require("./assets/eb2.jpeg")}
         resizeMode="cover"
       >
         <View style={styles.homeContainer}>
@@ -49,23 +47,27 @@ const Home = ({ showTheMap, showTheDirectory, showTheVideos, theToken }) => {
               end={{ x: 1, y: 1 }}
               style={styles.mapGr}
             >
-              <TouchableOpacity style={styles.mapBtn} onPress={showTheMap}>
-                <Text style={styles.mapTxt}>Go to map</Text>
+              <TouchableOpacity style={styles.mapBtn} onPress={() => navigation.navigate("Map")}>
+                <Text style={styles.mapTxt}>Map</Text>
               </TouchableOpacity>
             </LinearGradient>
 
-            <TouchableOpacity style={styles.listBtn} onPress={showTheDirectory}>
-              <Text style={styles.listTxt}>Go to list</Text>
+            <TouchableOpacity style={styles.listBtn} onPress={() => navigation.navigate("Learn")}>
+              <Text style={styles.listTxt}>Learn</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.youtubeBtn} onPress={showTheVideos}>
+            <TouchableOpacity style={styles.listBtn} onPress={() => navigation.navigate("Directory")}>
+              <Text style={styles.listTxt}>Directory</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.youtubeBtn} onPress={() => navigation.navigate("Videos")}>
               <Text style={styles.youtubeTxt}>Youtube</Text>
             </TouchableOpacity>
 
           </View>
         </View>
       </ImageBackground>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -76,18 +78,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 100,
   },
-  imgBack: {
-    marginTop: 20,
-  },
   welcome: {
     marginBottom: 40,
     textAlign: "center",
     color: "#fff",
     fontSize: 18,
+    fontFamily: 'Outfit_400Regular'
   },
   description: {
     textAlign: "center",
     alignItems: "center",
+    fontFamily: 'Outfit_400Regular'
   },
   dinoMsg: {
     textAlign: "center",
@@ -106,6 +107,7 @@ const styles = StyleSheet.create({
   mapTxt: {
     color: "#000",
     fontSize: 18,
+    textAlign: 'center'
   },
   mapBtn: {
     paddingTop: 10,
@@ -117,31 +119,32 @@ const styles = StyleSheet.create({
   listTxt: {
     color: "#000",
     fontSize: 18,
+    textAlign: 'center'
   },
   listBtn: {
     backgroundColor: "#fff",
     paddingTop: 10,
     paddingBottom: 10,
     paddingRight: 20,
-    paddingLeft: 30,
+    paddingLeft: 20,
     borderRadius: 10,
   },
   youtubeTxt: {
     color: "#fff",
     fontSize: 18,
+    textAlign: 'center'
   },
   youtubeBtn: {
     paddingTop: 10,
     paddingBottom: 10,
     paddingRight: 20,
-    paddingLeft: 30,
+    paddingLeft: 20,
     borderRadius: 10,
     borderWidth: 2,
     borderColor: "#fff",
   },
   btnContainer: {
-    marginTop: 100,
-    gap: 12,
+    gap: 10,
   },
 });
 

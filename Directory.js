@@ -7,16 +7,13 @@ import {
   StyleSheet,
   TouchableOpacity,
   ActivityIndicator,
-  BackHandler,
   Image,
 } from "react-native";
-// import { Image } from 'react-native-elements';
 import axios from "axios";
-import { getCurrentTimeInSeconds } from "expo-auth-session/build/TokenRequest";
 
 const PAGE_SIZE = 15;
 
-const Directory = ({ handlePress, showTheDirectory }) => {
+const Directory = ({ navigation }) => {
   const [dinos, setDinos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
@@ -36,18 +33,6 @@ const Directory = ({ handlePress, showTheDirectory }) => {
       })
       .catch((err) => console.error(err));
   }, []);
-
-  useEffect(() => {
-    BackHandler.addEventListener("hardwareBackPress", handleDirectory);
-    return () => {
-      BackHandler.removeEventListener("hardwareBackPress", handleDirectory);
-    };
-  }, []);
-
-  const handleDirectory = () => {
-    showTheDirectory();
-    return true;
-  };
 
   const loadMore = () => {
     setIsLoading(true);
@@ -72,19 +57,6 @@ const Directory = ({ handlePress, showTheDirectory }) => {
 
   return (
     <SafeAreaView style={dinos.length && styles.directoryContainer}>
-      <TouchableOpacity
-        style={{
-          flex: 1,
-          alignItems: "flex-end",
-          position: "absolute",
-          zIndex: 999999,
-          right: 20,
-          top: 40,
-        }}
-        onPress={showTheDirectory}
-      >
-        <Image source={require("./assets/back30.png")} />
-      </TouchableOpacity>
       <ScrollView
         onScroll={({ nativeEvent }) => {
           if (isCloseToBottom(nativeEvent)) {
@@ -97,7 +69,7 @@ const Directory = ({ handlePress, showTheDirectory }) => {
           <TouchableOpacity
             key={dino?._id}
             style={styles.dinoCard}
-            onPress={() => handlePress(dino)}
+            onPress={() => navigation.navigate("Infos", { dinosaur: dino })}
           >
             <Image
               source={{ uri: `http://89.117.36.161/${dino.img}` }}

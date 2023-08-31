@@ -24,8 +24,11 @@
       "bundleIdentifier": "com.gappsy.dashboard.www.ios5f6cc69706e43kk",
       "icon": "./assets/ios_logo.jpg",
       "googleServicesFile": "./GoogleService-Info.plist",
-      "buildNumber": "11",
-      "version": "1.2.11"
+      "buildNumber": "12",
+      "version": "1.2.12",
+      "config": {
+        "googleMapsApiKey" : "AIzaSyA2xzyLrf-i0soc6E5Qxb3d4QOVFso6Is4"
+      }
     },
     "extra": {
       "eas": {

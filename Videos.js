@@ -9,27 +9,12 @@ import {
   StyleSheet,
   BackHandler,
 } from "react-native";
-import WebView from "react-native-webview";
 import axios from "axios";
 
-const Videos = ({ showTheVideos }) => {
+const Videos = ({ navigation }) => {
   const [videos, setVideos] = useState([]);
-  const [selectedVideo, setSelectedVideo] = useState(null);
-  const [modalVisible, setModalVisible] = useState(false);
   const [nextPageToken, setNextPageToken] = useState("");
   const [isAll, setIsAll] = useState(false);
-
-  useEffect(() => {
-    BackHandler.addEventListener("hardwareBackPress", handleVideos);
-    return () => {
-      BackHandler.removeEventListener("hardwareBackPress", handleVideos);
-    };
-  }, []);
-
-  const handleVideos = () => {
-    showTheVideos();
-    return true;
-  };
 
   const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
     const paddingToBottom = 20;
@@ -47,11 +32,6 @@ const Videos = ({ showTheVideos }) => {
     };
     fetchContent();
   }, []);
-
-  const handleVideoPress = (video) => {
-    setSelectedVideo(video);
-    setModalVisible(true);
-  };
 
   const fetchChannelContent = async () => {
     const response = await axios.get(
@@ -79,19 +59,6 @@ const Videos = ({ showTheVideos }) => {
 
   return (
     <>
-      <TouchableOpacity
-        style={{
-          flex: 1,
-          alignItems: "flex-end",
-          position: "absolute",
-          zIndex: 999999,
-          right: 20,
-          top: 40,
-        }}
-        onPress={showTheVideos}
-      >
-        <Image source={require("./assets/back30.png")} />
-      </TouchableOpacity>
       <ScrollView style={styles.videosContainer} onScroll={({ nativeEvent }) => {
           if (isCloseToBottom(nativeEvent) && !isAll) {
             loadMore();
@@ -101,8 +68,8 @@ const Videos = ({ showTheVideos }) => {
         {videos.map((video, index) => (
           <TouchableOpacity
             key={video.id.videoId}
-            onPress={() => handleVideoPress(video)}
             style={styles.singleVideoContainer}
+            onPress={() => navigation.navigate("Video", { video: video })}
           >
             <Image
               source={{ uri: video.snippet.thumbnails.medium.url }}
@@ -121,31 +88,6 @@ const Videos = ({ showTheVideos }) => {
             <Text style={styles.videoTitle}>{video.snippet.title}</Text>
           </TouchableOpacity>
         ))}
-        <Modal
-          visible={modalVisible}
-          onRequestClose={() => setModalVisible(false)}
-        >
-          <TouchableOpacity
-            style={{
-              flex: 1,
-              alignItems: "flex-end",
-              position: "absolute",
-              zIndex: 999999,
-              right: 20,
-              top: 60,
-            }}
-            onPress={() => setModalVisible(false)}
-          >
-            <Text style={{ fontSize: 20 }} >❌</Text>
-          </TouchableOpacity>
-          <WebView
-            source={{
-              uri: selectedVideo
-                ? `https://www.youtube.com/embed/${selectedVideo.id.videoId}`
-                : null,
-            }}
-          />
-        </Modal>
       </ScrollView>
     </>
   );
