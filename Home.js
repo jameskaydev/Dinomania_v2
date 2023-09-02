@@ -83,12 +83,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#fff",
     fontSize: 18,
-    fontFamily: 'Outfit_400Regular'
   },
   description: {
     textAlign: "center",
     alignItems: "center",
-    fontFamily: 'Outfit_400Regular'
   },
   dinoMsg: {
     textAlign: "center",

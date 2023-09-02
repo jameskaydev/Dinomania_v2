@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import React from 'react'
-import { Exo2_400Regular, Exo2_500Medium_Italic } from '@expo-google-fonts/exo-2';
 
 
 const Learn = () => {
@@ -100,12 +99,10 @@ const styles = StyleSheet.create({
     color: '#d3d3d3',
     fontSize: 28,
     paddingTop: 10,
-    fontFamily: 'Exo2_500Medium_Italic'
   },
   description: {
     color: '#fff',
     fontSize: 18,
-    fontFamily: 'Exo2_400Regular',
     lineHeight: 26,
     color: 'lightgray',
   }
