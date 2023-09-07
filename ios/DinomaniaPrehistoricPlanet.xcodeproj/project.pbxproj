@@ -14,8 +14,8 @@
 		96905EF65AED1B983A6B3ABC /* libPods-DinomaniaPrehistoricPlanet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-DinomaniaPrehistoricPlanet.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		848A5647FBFA46B6B64CC31D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C513C42832064E6C97F18594 /* GoogleService-Info.plist */; };
-		3F2B0F0E34574D2F8059C578 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720496998921475ABF06F9E5 /* noop-file.swift */; };
+		3493EECEDBAF4CFE9AF44F67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AABA4CBEFA5C42B286B249BA /* GoogleService-Info.plist */; };
+		77A1A9FFE3314A6D864F8F1E /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D337AD4C624EC1AB0C4778 /* noop-file.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,9 +32,9 @@
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-DinomaniaPrehistoricPlanet/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		C513C42832064E6C97F18594 /* GoogleService-Info.plist */ = {isa = PBXFileReference; name = "GoogleService-Info.plist"; path = "DinomaniaPrehistoricPlanet/GoogleService-Info.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
-		720496998921475ABF06F9E5 /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "DinomaniaPrehistoricPlanet/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
-		C0C2BF4593D54D54ABCB1842 /* DinomaniaPrehistoricPlanet-Bridging-Header.h */ = {isa = PBXFileReference; name = "DinomaniaPrehistoricPlanet-Bridging-Header.h"; path = "DinomaniaPrehistoricPlanet/DinomaniaPrehistoricPlanet-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		AABA4CBEFA5C42B286B249BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; name = "GoogleService-Info.plist"; path = "DinomaniaPrehistoricPlanet/GoogleService-Info.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
+		60D337AD4C624EC1AB0C4778 /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "DinomaniaPrehistoricPlanet/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		C578F191EE9141449FBFEA7B /* DinomaniaPrehistoricPlanet-Bridging-Header.h */ = {isa = PBXFileReference; name = "DinomaniaPrehistoricPlanet-Bridging-Header.h"; path = "DinomaniaPrehistoricPlanet/DinomaniaPrehistoricPlanet-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +59,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				C513C42832064E6C97F18594 /* GoogleService-Info.plist */,
-				720496998921475ABF06F9E5 /* noop-file.swift */,
-				C0C2BF4593D54D54ABCB1842 /* DinomaniaPrehistoricPlanet-Bridging-Header.h */,
+				AABA4CBEFA5C42B286B249BA /* GoogleService-Info.plist */,
+				60D337AD4C624EC1AB0C4778 /* noop-file.swift */,
+				C578F191EE9141449FBFEA7B /* DinomaniaPrehistoricPlanet-Bridging-Header.h */,
 			);
 			name = DinomaniaPrehistoricPlanet;
 			sourceTree = "<group>";
@@ -202,8 +202,8 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				848A5647FBFA46B6B64CC31D /* GoogleService-Info.plist in Resources */,
-				3F53F02E00314FADBB9F5276 /* DinomaniaPrehistoricPlanet-Bridging-Header.h in Resources */,
+				3493EECEDBAF4CFE9AF44F67 /* GoogleService-Info.plist in Resources */,
+				B7FFC15A9CA34A8181EC5F57 /* DinomaniaPrehistoricPlanet-Bridging-Header.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +297,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				3F2B0F0E34574D2F8059C578 /* noop-file.swift in Sources */,
+				77A1A9FFE3314A6D864F8F1E /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

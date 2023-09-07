@@ -11,6 +11,7 @@ import {
   Animated,
   Linking,
 } from "react-native";
+import { SERVER } from '@env'
 
 const Infos = ({ route }) => {
   const { dinosaur } = route.params;
@@ -39,7 +40,7 @@ const Infos = ({ route }) => {
               resizeMode: "contain",
               marginBottom: 0,
             }}
-            source={{ uri: `http://89.117.36.161/${dinosaur.img}` }}
+            source={{ uri: `${SERVER}/${dinosaur.img}` }}
           />
           <Text style={styles.title}>{dinosaur.name}</Text>
           <Text style={styles.sectitle}>{dinosaur.secname}</Text>
@@ -97,7 +98,7 @@ const Infos = ({ route }) => {
             {dinosaur.charts.map((chart, index) => (
               <Image
                 key={index}
-                source={{ uri: `http://89.117.36.161/${chart}` }}
+                source={{ uri: `${SERVER}/${chart}` }}
                 style={{
                   width: width * 0.8,
                   height: undefined,

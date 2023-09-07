@@ -2,6 +2,7 @@ import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState, useRef } from 'react';
 import SearchBar from './SearchBar';
+import { SERVER, API_KEY } from '@env'
 
 const Search = ({ setDinos }) => {
   const [searchResults, setSearchResults] = useState([]);
@@ -16,10 +17,10 @@ const Search = ({ setDinos }) => {
       setSearch(text);
       clearTimeout(timeout.current);
       timeout.current = setTimeout( async () => {
-        const data = await fetch(`http://89.117.36.161/api/dino?s=${search}`, {
+        const data = await fetch(`${SERVER}/api/dino?s=${search}`, {
           method: 'GET',
           headers: {
-            auth: "H3l5b1T5YRAD156iXNJO",
+            auth: API_KEY,
           },
         })
         const main = await data.json();
@@ -57,7 +58,7 @@ const Search = ({ setDinos }) => {
         >
           <Image 
             style={{width: 40, height: 40}} 
-            source={{ uri: `http://89.117.36.161/${result.img}`}} 
+            source={{ uri: `${SERVER}/${result.img}`}} 
           />
           <Text style={styles.res}>{result.name}</Text>
         </TouchableOpacity>
@@ -70,19 +71,11 @@ const Search = ({ setDinos }) => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // flexDirection: 'column',
-    // height: ( cc * 30 ) + 400,
     paddingTop: 20,
-    // paddingBottom: 25,
     backgroundColor: '#181818',
-    // marginTop: 100,
-    // height: 'auto',
-    // position: 'relative'
   },
   searchResults: {
     paddingLeft: 10,
-    // height: 100,
     paddingTop: 20,
     flex: 1,
     flexDirection: 'column',
@@ -92,13 +85,8 @@ const styles = StyleSheet.create({
     flex: 1, 
     flexDirection: 'row',
     alignItems: 'center',
-    // backgroundColor: 'rgba(24,24,24,0.1)',
     width: '100%',
     height: 80,
-    // borderWidth: 5,
-    // borderColor: 'red',
-    // position: 'absolute',
-    // top: 20
   },
   res: {
     color: "#fff",

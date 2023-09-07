@@ -10,6 +10,7 @@ import {
   BackHandler,
 } from "react-native";
 import axios from "axios";
+import { YOUTUBE_API_KEY } from '@env'
 
 const Videos = ({ navigation }) => {
   const [videos, setVideos] = useState([]);
@@ -27,7 +28,6 @@ const Videos = ({ navigation }) => {
   useEffect(() => {
     const fetchContent = async () => {
       const data = await fetchChannelContent();
-      // data = await data.filter(video => video.snippet.description )
       setVideos(data);
     };
     fetchContent();
@@ -38,7 +38,7 @@ const Videos = ({ navigation }) => {
       "https://www.googleapis.com/youtube/v3/search",
       {
         params: {
-          key: "AIzaSyASQJD8T53iDN6dSs346NziCJIourJlTDw",
+          key: YOUTUBE_API_KEY,
           channelId: "UCke5I8zQqBID3oDce08u4UQ",
           part: "snippet",
           maxResults: 50,
