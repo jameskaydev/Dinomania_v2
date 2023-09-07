@@ -53,7 +53,7 @@ const Map = ({ navigation }) => {
           userInterfaceStyle='dark'
           minZoomLevel={2}
           maxZoomLevel={10}
-          mapType="hybrid"
+          mapType="satellite"
           style={{
             width: '100%',
             height: '100%'
