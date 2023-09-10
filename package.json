@@ -26,7 +26,7 @@
     "expo-device": "^5.4.0",
     "expo-font": "^11.4.0",
     "expo-linear-gradient": "^12.3.0",
-    "expo-modules-autolinking": "~1.1.0 || ~1.2.0",
+    "expo-modules-autolinking": "~1.5.0",
     "expo-notifications": "^0.20.1",
     "expo-splash-screen": "^0.20.5",
     "expo-status-bar": "^1.6.0",
@@ -58,6 +58,9 @@
       "@expo/config": {
         "@expo/config-plugins": "6.0.2"
       },
+      "@expo/prebuild-congif": {
+        "expo-modules-autolinking": "1.5.0"
+      },
       "@expo/prebuild-config": {
         "@expo/config-plugins": "6.0.2"
       },
@@ -65,6 +68,28 @@
         "@expo/config-plugins": "6.0.2",
         "@expo/config": {
           "@expo/config-plugins": "6.0.2"
+        },
+        "@expo/webpack-config": {
+          "expo": {
+            "@expo/cli": {
+              "@expo/prebuild-config": {
+                "expo-modules-autolinking": "1.5.0"
+              }
+            },
+            "expo-modules-autolinking": "1.5.0"
+          }
+        }
+      }
+    },
+    "expo-splash-screen": {
+      "@expo/prebuild-config": {
+        "expo-modules-autolinking": "1.5.0"
+      }
+    },
+    "expo": {
+      "@expo/cli": {
+        "@expo/prebuild-config": {
+          "expo-modules-autolinking": "1.5.0"
         }
       }
     }
