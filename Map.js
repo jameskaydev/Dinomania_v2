@@ -5,6 +5,7 @@ import {
 } from "react-native";
 import Search from "./Search";
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import 'react-native-gesture-handler';
 import { SERVER, API_KEY } from '@env'
 
 const Map = ({ navigation }) => {
@@ -61,7 +62,6 @@ const Map = ({ navigation }) => {
           onRegionChangeComplete={async (region) => {
             const coords = await ref?.current?.getCamera();
             setZoomLevel(coords.zoom)
-            console.log(zoomLevel);
           }}
           ref={ref}
       >
@@ -70,7 +70,7 @@ const Map = ({ navigation }) => {
             return (
               <Marker
               key={index}
-              coordinate={{latitude: dinosaur.locationx, longitude: dinosaur.locationy}}
+              coordinate={{latitude: parseFloat(dinosaur.locationx), longitude: parseFloat(dinosaur.locationy)}}
               title={dinosaur.name}
               onPress={() => navigation.navigate("Infos", {dinosaur: dinosaur})}
               >
@@ -79,10 +79,6 @@ const Map = ({ navigation }) => {
                   width={zoomLevel > 4 ? (zoomLevel >= 6 ? 100 : 70 ) : 40}
                   resizeMode="contain"
                   style={{
-                    shadowColor: 'white',
-                    shadowOffset: { width: 0, height: 0 },
-                    shadowOpacity: 1,
-                    shadowRadius: 2,
                     minHeight: 70,
                     maxHeight: 160
                   }}
