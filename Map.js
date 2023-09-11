@@ -59,7 +59,7 @@ const Map = ({ navigation }) => {
             width: '100%',
             height: '100%'
           }}
-          onRegionChangeComplete={async (region) => {
+          onRegionChange={async (region) => {
             const coords = await ref?.current?.getCamera();
             setZoomLevel(coords.zoom)
           }}
