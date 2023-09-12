@@ -18,7 +18,7 @@ const Map = ({ navigation }) => {
   useEffect( () => {
     
     const fetchDinos = async () => {
-      const data = await fetch(`${SERVER}/api/cat/dinosaurs`, {
+      const data = await fetch(`https://dinomaniaadmin.com/api/cat/dinosaurs`, {
         method: "GET",
         headers: {
           auth: 'H3l5b1T5YRAD156iXNJO',
