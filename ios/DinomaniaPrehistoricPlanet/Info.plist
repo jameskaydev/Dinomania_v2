@@ -22,6 +22,10 @@
     <string>1.3.0</string>
     <key>CFBundleSignature</key>
     <string>????</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>We use your location to show you nearby dinosaurs on the map. This helps us provide a more interactive and personalized experience as you explore our dinosaur collection.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We use your location to show you nearby dinosaurs on the map. This helps us provide a more interactive and personalized experience as you explore our dinosaur collection.</string>
     <key>CFBundleURLTypes</key>
     <array>
       <dict>
