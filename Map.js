@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import {
   View,
   Image,
+  Text
 } from "react-native";
 import Search from "./Search";
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
@@ -11,19 +12,25 @@ import { SERVER, API_KEY } from '@env'
 const Map = ({ navigation }) => {
   const [dinos, setDinos] = useState([]);
   const [zoomLevel, setZoomLevel] = useState(4);
+  const [err, setErr] = useState('');
   const ref = useRef(null)
 
   useEffect( () => {
+    
     const fetchDinos = async () => {
-      const data = await fetch(`${SERVER}/api/cat/dinosaurs`, {
-        method: "GET",
-        headers: {
-          auth: API_KEY,
+        try {
+        const data = await fetch(`${SERVER}/api/cat/dinosaurs`, {
+          method: "GET",
+          headers: {
+            auth: API_KEY,
+          }
+        });
+        const main = await data.json();
+        setDinos(main)
+        } catch (er) {
+          setErr(er);
         }
-      });
-      const main = await data.json();
-      setDinos(main)
-    }
+      }
 
     fetchDinos()
   }, []);
@@ -46,7 +53,15 @@ const Map = ({ navigation }) => {
         backgroundColor: "#181818",
       }}
     >
-      <Search
+      <Text style={{color: '#fff'}}>
+        {
+          JSON.stringify(er)
+        }
+      </Text>
+      <Text style={{color: '#fff'}}>
+        {JSON.stringify(dinos)}
+      </Text>
+      {/* <Search
         setDinos={handleDinosaurs}
       />
       <MapView 
@@ -87,7 +102,7 @@ const Map = ({ navigation }) => {
             )
           })
         }
-      </MapView>
+      </MapView> */}
     </View>
   );
 };
