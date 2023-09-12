@@ -76,12 +76,12 @@ const Map = ({ navigation }) => {
             return (
               <Marker
                 key={index}
-                coordinate={{latitude: parseFloat(dinosaur.locationx), longitude: parseFloat(dinosaur.locationy)}}
+                coordinate={{latitude: dinosaur.locationx, longitude: dinosaur.locationy}}
                 title={dinosaur.name}
                 onPress={() => navigation.navigate("Infos", {dinosaur: dinosaur})}
               >
                 <Image
-                  source={{ uri: `${SERVER}/${dinosaur.img}` }}
+                  source={{ uri: `https://dinomaniaadmin.com/${dinosaur.img}` }}
                   width={zoomLevel > 4 ? (zoomLevel >= 6 ? 100 : 70 ) : 40}
                   resizeMode="contain"
                   style={{

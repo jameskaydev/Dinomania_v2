@@ -17,10 +17,10 @@ const Search = ({ setDinos }) => {
       setSearch(text);
       clearTimeout(timeout.current);
       timeout.current = setTimeout( async () => {
-        const data = await fetch(`${SERVER}/api/dino?s=${search}`, {
+        const data = await fetch(`https://dinomaniaadmin.com/api/dino?s=${search}`, {
           method: 'GET',
           headers: {
-            auth: API_KEY,
+            auth: 'H3l5b1T5YRAD156iXNJO',
           },
         })
         const main = await data.json();
