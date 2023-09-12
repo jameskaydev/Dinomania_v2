@@ -24,7 +24,7 @@
       "bundleIdentifier": "com.gappsy.dashboard.www.ios5f6cc69706e43kk",
       "icon": "./assets/ios_logo.jpg",
       "googleServicesFile": "./GoogleService-Info.plist",
-      "buildNumber": "21",
+      "buildNumber": "22",
       "version": "1.3.0",
       "config": {
         "googleMapsApiKey" : "AIzaSyDx3v3UQ0X2lCf3Q8_B7mfwOyfP-i202A4"

@@ -18,18 +18,14 @@ const Map = ({ navigation }) => {
   useEffect( () => {
     
     const fetchDinos = async () => {
-        try {
-        const data = await fetch(`${SERVER}/api/cat/dinosaurs`, {
-          method: "GET",
-          headers: {
-            auth: API_KEY,
-          }
-        });
-        const main = await data.json();
-        setDinos(main)
-        } catch (er) {
-          setErr(er);
+      const data = await fetch(`${SERVER}/api/cat/dinosaurs`, {
+        method: "GET",
+        headers: {
+          auth: 'H3l5b1T5YRAD156iXNJO',
         }
+      });
+      const main = await data.json();
+      setDinos(main)
       }
 
     fetchDinos()
@@ -53,17 +49,12 @@ const Map = ({ navigation }) => {
         backgroundColor: "#181818",
       }}
     >
-      <Text style={{color: '#fff'}}>
-        {
-          JSON.stringify(er)
-        }
-      </Text>
-      <Text style={{color: '#fff'}}>
-        {JSON.stringify(dinos)}
-      </Text>
-      {/* <Search
+      <Search
         setDinos={handleDinosaurs}
       />
+      <Text style={{color: '#fff'}}>
+        {API_KEY}
+      </Text>
       <MapView 
           provider={PROVIDER_GOOGLE}
           userInterfaceStyle='dark'
@@ -84,10 +75,10 @@ const Map = ({ navigation }) => {
           dinos && dinos.map( (dinosaur, index) => {
             return (
               <Marker
-              key={index}
-              coordinate={{latitude: parseFloat(dinosaur.locationx), longitude: parseFloat(dinosaur.locationy)}}
-              title={dinosaur.name}
-              onPress={() => navigation.navigate("Infos", {dinosaur: dinosaur})}
+                key={index}
+                coordinate={{latitude: parseFloat(dinosaur.locationx), longitude: parseFloat(dinosaur.locationy)}}
+                title={dinosaur.name}
+                onPress={() => navigation.navigate("Infos", {dinosaur: dinosaur})}
               >
                 <Image
                   source={{ uri: `${SERVER}/${dinosaur.img}` }}
@@ -102,7 +93,7 @@ const Map = ({ navigation }) => {
             )
           })
         }
-      </MapView> */}
+      </MapView>
     </View>
   );
 };
