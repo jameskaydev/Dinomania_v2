@@ -1,13 +1,12 @@
 import { TextInput, TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
-import { SERVER, API_KEY } from '@env';
 
 const SearchBar = ({ handleSearch, cleanSearch, search, setDinos }) => {
   const handleSelectedCategory = async selected => {
-    const data = await fetch(`${SERVER}/api/cat/${selected}`, {
-      method: "GET",
+    const data = await fetch(`https://dinomaniaadmin.com/api/cat/${selected}`, {
+      method: "GET", 
       headers: {
-        auth: API_KEY,
+        auth: 'H3l5b1T5YRAD156iXNJO',
       },
     })
     const main = await data.json();

@@ -2,7 +2,6 @@ import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState, useRef } from 'react';
 import SearchBar from './SearchBar';
-import { SERVER, API_KEY } from '@env'
 
 const Search = ({ setDinos }) => {
   const [searchResults, setSearchResults] = useState([]);
@@ -58,7 +57,7 @@ const Search = ({ setDinos }) => {
         >
           <Image 
             style={{width: 40, height: 40}} 
-            source={{ uri: `${SERVER}/${result.img}`}} 
+            source={{ uri: `https://dinomaniaadmin.com/${result.img}`}} 
           />
           <Text style={styles.res}>{result.name}</Text>
         </TouchableOpacity>

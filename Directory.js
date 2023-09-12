@@ -10,7 +10,6 @@ import {
   Image,
 } from "react-native";
 import axios from "axios";
-import { SERVER, API_KEY } from '@env'
 
 const PAGE_SIZE = 15;
 
@@ -22,9 +21,9 @@ const Directory = ({ navigation }) => {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${SERVER}/api/dinos?sorted=1`, {
+      .get(`https://dinomaniaadmin.com/api/dinos?sorted=1`, {
         headers: {
-          auth: API_KEY,
+          auth: 'H3l5b1T5YRAD156iXNJO',
         },
       })
       .then((response) => {
@@ -41,9 +40,9 @@ const Directory = ({ navigation }) => {
     const startIndex = nextPage * PAGE_SIZE;
     const endIndex = startIndex + PAGE_SIZE;
     axios
-      .get(`${SERVER}/api/dinos?sorted=1`, {
+      .get(`https://dinomaniaadmin.com/api/dinos?sorted=1`, {
         headers: {
-          auth: API_KEY,
+          auth: 'H3l5b1T5YRAD156iXNJO',
         },
       })
       .then((response) => {
@@ -73,7 +72,7 @@ const Directory = ({ navigation }) => {
             onPress={() => navigation.navigate("Infos", { dinosaur: dino })}
           >
             <Image
-              source={{ uri: `${SERVER}/${dino.img}` }}
+              source={{ uri: `https://dinomaniaadmin.com/${dino.img}` }}
               loadingIndicatorSource={require("./assets/loading.png")}
               resizeMode="contain"
               style={styles.dinoImg}

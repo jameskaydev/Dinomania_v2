@@ -2,12 +2,10 @@ import React, { useEffect, useState, useRef } from "react";
 import {
   View,
   Image,
-  Text
 } from "react-native";
 import Search from "./Search";
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import 'react-native-gesture-handler';
-import { SERVER, API_KEY } from '@env'
 
 const Map = ({ navigation }) => {
   const [dinos, setDinos] = useState([]);
@@ -52,9 +50,6 @@ const Map = ({ navigation }) => {
       <Search
         setDinos={handleDinosaurs}
       />
-      <Text style={{color: '#fff'}}>
-        {API_KEY}
-      </Text>
       <MapView 
           provider={PROVIDER_GOOGLE}
           userInterfaceStyle='dark'

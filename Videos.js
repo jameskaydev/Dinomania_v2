@@ -4,13 +4,10 @@ import {
   Text,
   Image,
   TouchableOpacity,
-  Modal,
   ScrollView,
   StyleSheet,
-  BackHandler,
 } from "react-native";
 import axios from "axios";
-import { YOUTUBE_API_KEY } from '@env'
 
 const Videos = ({ navigation }) => {
   const [videos, setVideos] = useState([]);
@@ -38,7 +35,7 @@ const Videos = ({ navigation }) => {
       "https://www.googleapis.com/youtube/v3/search",
       {
         params: {
-          key: YOUTUBE_API_KEY,
+          key: 'AIzaSyASQJD8T53iDN6dSs346NziCJIourJlTDw',
           channelId: "UCke5I8zQqBID3oDce08u4UQ",
           part: "snippet",
           maxResults: 50,

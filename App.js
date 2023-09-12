@@ -16,7 +16,6 @@ import * as Notifications from "expo-notifications";
 import { Exo2_400Regular, Exo2_500Medium_Italic } from '@expo-google-fonts/exo-2';
 import { Outfit_400Regular } from '@expo-google-fonts/outfit';
 import { useFonts } from 'expo-font'
-import { SERVER, API_KEY } from '@env'
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -66,9 +65,9 @@ export default function App() {
     try {
     registerForPushNotificationsAsync().then(({token, error}) => {
       setTheToken(token);
-      axios.post(`${SERVER}/api/saveToken?platform=ios&token=${token}`, {}, {
+      axios.post(`https://dinomaniaadmin.com/api/saveToken?platform=ios&token=${token}`, {}, {
         headers: {
-          auth: API_KEY,
+          auth: 'H3l5b1T5YRAD156iXNJO',
         }
       })
     });    

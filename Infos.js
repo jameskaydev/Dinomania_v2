@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Modal,
   StyleSheet,
@@ -11,7 +11,6 @@ import {
   Animated,
   Linking,
 } from "react-native";
-import { SERVER } from '@env'
 
 const Infos = ({ route }) => {
   const { dinosaur } = route.params;
@@ -40,7 +39,7 @@ const Infos = ({ route }) => {
               resizeMode: "contain",
               marginBottom: 0,
             }}
-            source={{ uri: `${SERVER}/${dinosaur.img}` }}
+            source={{ uri: `https://dinomaniaadmin.com/${dinosaur.img}` }}
           />
           <Text style={styles.title}>{dinosaur.name}</Text>
           <Text style={styles.sectitle}>{dinosaur.secname}</Text>
@@ -98,7 +97,7 @@ const Infos = ({ route }) => {
             {dinosaur.charts.map((chart, index) => (
               <Image
                 key={index}
-                source={{ uri: `${SERVER}/${chart}` }}
+                source={{ uri: `https://dinomaniaadmin.com/${chart}` }}
                 style={{
                   width: width * 0.8,
                   height: undefined,
