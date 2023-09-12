@@ -38,7 +38,7 @@
       </dict>
     </array>
     <key>CFBundleVersion</key>
-    <string>17</string>
+    <string>19</string>
     <key>GMSApiKey</key>
     <string>AIzaSyDx3v3UQ0X2lCf3Q8_B7mfwOyfP-i202A4</string>
     <key>LSRequiresIPhoneOS</key>
@@ -56,6 +56,8 @@
         </dict>
       </dict>
     </dict>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>We use your location to show you nearby dinosaurs on the map. This helps us provide a more interactive and personalized experience as you explore our dinosaur collection.</string>
     <key>UILaunchStoryboardName</key>
     <string>SplashScreen</string>
     <key>UIRequiredDeviceCapabilities</key>
