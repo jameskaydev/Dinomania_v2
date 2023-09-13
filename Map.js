@@ -54,8 +54,8 @@ const Map = ({ navigation }) => {
           provider={PROVIDER_GOOGLE}
           userInterfaceStyle='dark'
           minZoomLevel={2}
-          maxZoomLevel={10}
-          mapType="satellite"
+          maxZoomLevel={8}
+          mapType="hybrid"
           style={{
             width: '100%',
             height: '100%'
@@ -65,6 +65,9 @@ const Map = ({ navigation }) => {
             setZoomLevel(coords.zoom)
           }}
           ref={ref}
+          showsIndoors={false}
+          showsBuildings={false}
+          showsMyLocationButton={false}
       >
         {
           dinos && dinos.map( (dinosaur, index) => {
